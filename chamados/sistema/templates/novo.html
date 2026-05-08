@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    
+<!---------------------------------------BARRA SUPERIOR----------------------------------------------------------->
+<!-- NAVBAR PROFISSIONAL -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-pro shadow-sm fixed-top">
+<div class="container-fluid">
+
+<li class="nav-item">
+<!--TELA INICIAL--->      
+<a href="/dashboard" class="btn btn-white btn-pro"><i class="bi bi-fill"></i>Início</a></li>
+
+<!-- BOTÃO MOBILE -->
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<!-- MENU -->
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto align-items-center gap-2">
+
+<!-- USUÁRIO -->
+<li class="nav-item text-white me-3">
+  <i class="bi bi-person me-1"></i>{{session['user']}}</li>     
+
+<!-- SAIR -->
+<li class="nav-item">
+  <a href="/logout" class="btn btn-danger btn-pro">
+    <i class="bi bi-box-arrow-right"></i> Sair</a></li>
+</ul>
+</div>    
+</div>  
+</nav>
+<!----------------------------------------------------------------------------------------------------------------->
+
+<div class="card p-4 shadow" style="color: rgb(46, 45, 45);">
+<h3>📨 Novo chamado</h3>
+
+<form method="POST"> 
+<div class="texto-destaque">
+<input type="text" name="solicitante" 
+       class="form-control mb-3" 
+       value="{{ session['user'] }}" 
+       readonly>
+
+<label><strong>SELECIONAR DESTINO:</strong></label>
+<select name="destino" class="form-control mb-2">
+    <option value="" disabled selected></option>
+    <option value="Apoio">Serviço de apoio</option>
+    <option value="TI">Ar condicionado</option>
+    <option value="Manutencao">Manutenção</option>
+    <option value="Manutencao">Marcenaria</option>
+    <option value="TI">Informática</option>
+</select>
+
+<label><strong>LOCAL / SETOR / ÁREA PATRIMONIAL</strong></label>
+<input name="local" class="form-control mb-2" rows="1" required></input>
+
+<label><strong>DESCRIÇÃO:</strong></label>
+<textarea name="descricao" class="form-control mb-2" required></textarea>
+
+<label>
+    <strong>
+        DEFINA A PRIORIDADE:
+        (<span style="color: rgb(243, 83, 83);">se for urgente ligue para o setor</span>)
+    </strong>
+</label>
+
+<select name="prioridade" class="form-control mb-2">
+    <option value="" disabled selected></option>
+    <option>Baixa</option>
+    <option>Média</option>
+    <option>Alta</option>
+</select>
+
+<label><strong>SUGESTÃO DE DATA DISPONÍVEL PARA A MANUTENÇÃO:</strong></label>
+<input type="text" id="data_manutencao" name="data_manutencao" class="form-control mb-2">      
+</div>
+<button class="btn btn-success w-100">🚀 Abrir Chamado</button>
+</form>
+</div>
+</div>
+<!-------------------------------------------------------------------RODAPÉ--------------------------------------------------------->
+<footer class="footer-pro">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <span>© 2026 HelpDesk - Sistema de chamados</span>
+        <span>Desenvolvido por TI • v1.0</span>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+<script>
+flatpickr("#data_manutencao", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",   // salva padrão
+    altInput: true,
+    altFormat: "d/m/Y H:i",    // mostra BR
+    minDate: "today",
+    time_24hr: true,
+    locale: "pt"
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
