@@ -1,2 +1,2 @@
 # Sistema de Chamados
-Sistema de chamados desenvolvido em Python, HTML e CSS para gerenciamento interno de uma instituição escolar, criado com auxílio do ChatGPT. Permite abertura e acompanhamento de chamados para diferentes setores, com controle de usuários administradores e usuários comuns, facilitando a comunicação e organização do suporte interno.
+Aplicação web de gestão de chamados com controle de usuários, setores, permissões e histórico de atendimentos. Possui um chatbot inteligente que orienta os usuários, fornece dicas e soluções para dúvidas e problemas comuns e automatiza a abertura de chamados, coletando as informações necessárias para registrar e encaminhar cada solicitação ao setor responsável.
